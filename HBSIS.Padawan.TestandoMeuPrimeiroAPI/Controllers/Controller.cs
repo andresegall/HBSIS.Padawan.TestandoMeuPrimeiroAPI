@@ -35,12 +35,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("SimulaEvolucaoCOVID")]
 		public ActionResult GetSimulacao(int semanas)
 		{
-			int numeroDeEstados = 0;
-
-			foreach (var estado in contexto)
-				numeroDeEstados += 1;
-
-			Simulacao.AtualizaContexto(ref contexto, semanas, numeroDeEstados);
+			Simulacao.AtualizaContexto(ref contexto, semanas);
 			return Ok(contexto);
 		}
 

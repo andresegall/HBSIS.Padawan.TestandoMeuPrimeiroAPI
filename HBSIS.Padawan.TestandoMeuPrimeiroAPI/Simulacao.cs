@@ -7,7 +7,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI
 {
 	public static class Simulacao
 	{
-		public static void AtualizaContexto(ref IEnumerable<Estado> contexto, int tempo, int numeroDeEstados)
+		public static void AtualizaContexto(ref IEnumerable<Estado> contexto, int tempo)
 		{
 			int semanas = 0;
 			var rand = new Random();
@@ -37,7 +37,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI
 					//Existe 48% de chance de um infectado ir para outro estado
 					if (rand.Next(0,2) == 0)
 					{
-						var sorteio = rand.Next(0, numeroDeEstados);
+						var sorteio = rand.Next(0, contexto.Count());
 						contexto.First(q => q.Nome == item.Nome).Infectados -= 1;
 						contexto.First(q => q.ID == sorteio).Infectados += 1;
 					}
