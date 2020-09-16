@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "28hQCm0q7yYxQvdg3fCrpjq4PG3j/O0n1s4J7gKJ75IuBooqA38Y6CJ0S1kqkJOIVnA7h7ne71dUnCj8CPVc7A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\andre.ando\\source\\repos\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.SimulacaoCOVIDAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre.ando\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\andre.ando\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
+    "C:\\Users\\andre.ando\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
+    "C:\\Users\\andre.ando\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}
