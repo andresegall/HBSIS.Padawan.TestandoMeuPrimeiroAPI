@@ -32,6 +32,7 @@
 			this.txtUrl = new System.Windows.Forms.TextBox();
 			this.txtDisplay = new System.Windows.Forms.TextBox();
 			this.btnGetSituacaoAtual = new System.Windows.Forms.Button();
+			this.btnIncluirEstado = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// fontDialog1
@@ -66,11 +67,22 @@
 			this.btnGetSituacaoAtual.UseVisualStyleBackColor = true;
 			this.btnGetSituacaoAtual.Click += new System.EventHandler(this.btnAtual_Click);
 			// 
+			// btnIncluirEstado
+			// 
+			this.btnIncluirEstado.Location = new System.Drawing.Point(261, 356);
+			this.btnIncluirEstado.Name = "btnIncluirEstado";
+			this.btnIncluirEstado.Size = new System.Drawing.Size(190, 51);
+			this.btnIncluirEstado.TabIndex = 1;
+			this.btnIncluirEstado.Text = "Incluir Estado";
+			this.btnIncluirEstado.UseVisualStyleBackColor = true;
+			this.btnIncluirEstado.Click += new System.EventHandler(this.btnAtual_Click);
+			// 
 			// MenuPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnIncluirEstado);
 			this.Controls.Add(this.btnGetSituacaoAtual);
 			this.Controls.Add(this.txtDisplay);
 			this.Controls.Add(this.txtUrl);
@@ -88,6 +100,7 @@
 		private System.Windows.Forms.TextBox txtUrl;
 		private System.Windows.Forms.TextBox txtDisplay;
 		private System.Windows.Forms.Button btnGetSituacaoAtual;
+		private System.Windows.Forms.Button btnIncluirEstado;
 	}
 }
 
