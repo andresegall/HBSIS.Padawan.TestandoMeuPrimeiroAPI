@@ -1,0 +1,6 @@
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\COVID19_Simulator_Client.exe
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.csprojAssemblyReference.cache
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.MenuPrincipal.resources
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.csproj.GenerateResource.cache
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.AssemblyInfoInputs.cache
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.AssemblyInfo.cs

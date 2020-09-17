@@ -39,14 +39,16 @@
 			// 
 			// txtUrl
 			// 
-			this.txtUrl.Location = new System.Drawing.Point(258, 36);
+			this.txtUrl.Location = new System.Drawing.Point(167, 34);
 			this.txtUrl.Name = "txtUrl";
-			this.txtUrl.Size = new System.Drawing.Size(229, 23);
+			this.txtUrl.Size = new System.Drawing.Size(458, 23);
 			this.txtUrl.TabIndex = 0;
+			this.txtUrl.Text = "https://localhost:44360/simuladorTransmissaoCOVID19/getSituacaoAtual";
+			this.txtUrl.TextChanged += new System.EventHandler(this.txtUrl_TextChanged);
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(258, 113);
+			this.textBox1.Location = new System.Drawing.Point(273, 113);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(229, 192);

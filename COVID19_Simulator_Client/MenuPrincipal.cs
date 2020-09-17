@@ -26,5 +26,10 @@ namespace COVID19_Simulator_Client
 		{
 
 		}
+
+		private void txtUrl_TextChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
