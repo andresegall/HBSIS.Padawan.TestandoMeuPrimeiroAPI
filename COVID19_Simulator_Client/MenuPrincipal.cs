@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using COVID19_Simulator_Client.Models;
 using Newtonsoft.Json;
 
 namespace COVID19_Simulator_Client
@@ -46,14 +47,19 @@ namespace COVID19_Simulator_Client
 					if (response.IsSuccessStatusCode)
 					{
 						var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-						pnlDisplay.DataSource = JsonConvert.DeserializeObject<Produto[]>(ProdutoJsonString).ToList();
+						txtDisplay.Text = Convert.ToString(JsonConvert.DeserializeObject<Estado[]>(ProdutoJsonString).ToList());
 					}
 					else
 					{
-						MessageBox.Show("Não foi possível obter o produto : " + response.StatusCode);
+						MessageBox.Show("Não foi possível obter o estado : " + response.StatusCode);
 					}
 				}
 			}
+		}
+
+		private void btnAtual_Click(object sender, EventArgs e)
+		{
+			GetAllProdutos();
 		}
 	}
 }
