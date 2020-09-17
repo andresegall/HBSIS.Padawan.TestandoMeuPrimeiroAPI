@@ -45,14 +45,10 @@ namespace COVID19_Simulator_Client
 				using (var response = await client.GetAsync(URI))
 				{
 					if (response.IsSuccessStatusCode)
-					{
-						var EstadoJsonString = await response.Content.ReadAsStringAsync();
-						txtDisplay.Text = Convert.ToString(JsonConvert.DeserializeObject<Estado[]>(EstadoJsonString).ToList());
-					}
+						txtDisplay.Text = await response.Content.ReadAsStringAsync();
+
 					else
-					{
 						MessageBox.Show("Não foi possível obter o estado : " + response.StatusCode);
-					}
 				}
 			}
 		}
@@ -60,6 +56,11 @@ namespace COVID19_Simulator_Client
 		private void btnAtual_Click(object sender, EventArgs e)
 		{
 			GetAllProdutos();
+		}
+
+		private void txtDisplay_TextChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

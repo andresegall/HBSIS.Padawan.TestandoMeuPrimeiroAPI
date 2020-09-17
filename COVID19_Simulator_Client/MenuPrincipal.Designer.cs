@@ -54,6 +54,7 @@
 			this.txtDisplay.Name = "txtDisplay";
 			this.txtDisplay.Size = new System.Drawing.Size(229, 192);
 			this.txtDisplay.TabIndex = 0;
+			this.txtDisplay.TextChanged += new System.EventHandler(this.txtDisplay_TextChanged);
 			// 
 			// btnGetSituacaoAtual
 			// 
