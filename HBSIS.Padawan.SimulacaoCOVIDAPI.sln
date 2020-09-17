@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Padawan.SimulacaoCOVIDAPI", "HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.SimulacaoCOVIDAPI.csproj", "{5C466E68-3760-4919-A125-6FB8FF50968F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COVID19_Simulator_Server", "HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Server.csproj", "{5C466E68-3760-4919-A125-6FB8FF50968F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COVID19_Simulator_Client", "COVID19_Simulator_Client\COVID19_Simulator_Client.csproj", "{D0083900-A983-4D2D-974E-EAACCAC709E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COVID19_Simulator_Client", "COVID19_Simulator_Client\COVID19_Simulator_Client.csproj", "{D0083900-A983-4D2D-974E-EAACCAC709E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -138,9 +138,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre.ando\\source\\repos\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.SimulacaoCOVIDAPI.csproj",
-      "projectName": "HBSIS.Padawan.SimulacaoCOVIDAPI",
-      "projectPath": "C:\\Users\\andre.ando\\source\\repos\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.SimulacaoCOVIDAPI.csproj",
+      "projectUniqueName": "C:\\Users\\andre.ando\\source\\repos\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\COVID19_Simulator_Server.csproj",
+      "projectName": "COVID19_Simulator_Server",
+      "projectPath": "C:\\Users\\andre.ando\\source\\repos\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\COVID19_Simulator_Server.csproj",
       "packagesPath": "C:\\Users\\andre.ando\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\andre.ando\\source\\repos\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\HBSIS.Padawan.TestandoMeuPrimeiroAPI\\obj\\",
       "projectStyle": "PackageReference",

@@ -17,5 +17,14 @@ namespace COVID19_Simulator_Client
 			InitializeComponent();
 		}
 
+		private void fontDialog1_Apply(object sender, EventArgs e)
+		{
+
+		}
+
+		private void MenuPrincipal_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
