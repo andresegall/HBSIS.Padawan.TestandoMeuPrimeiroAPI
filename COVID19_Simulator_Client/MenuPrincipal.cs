@@ -39,17 +39,13 @@ namespace COVID19_Simulator_Client
 		int codigoProduto = 1;
 		private async void GetAllProdutos()
 		{
-			URI = txtUrl.Text;
-			using (var client = new HttpClient())
+			using (var response = await new HttpClient().GetAsync("https://localhost:44360/simuladorTransmissaoCOVID19/getSituacaoAtual"))
 			{
-				using (var response = await client.GetAsync(URI))
-				{
-					if (response.IsSuccessStatusCode)
-						txtDisplay.Text = await response.Content.ReadAsStringAsync();
+				if (response.IsSuccessStatusCode)
+					txtDisplay.Text = await response.Content.ReadAsStringAsync();
 
-					else
-						MessageBox.Show("Não foi possível obter o estado : " + response.StatusCode);
-				}
+				else
+					MessageBox.Show("Não foi possível obter o estado : " + response.StatusCode);
 			}
 		}
 

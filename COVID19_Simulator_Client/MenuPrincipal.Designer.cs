@@ -49,20 +49,20 @@
 			// 
 			// txtDisplay
 			// 
-			this.txtDisplay.Location = new System.Drawing.Point(290, 112);
+			this.txtDisplay.Location = new System.Drawing.Point(65, 94);
 			this.txtDisplay.Multiline = true;
 			this.txtDisplay.Name = "txtDisplay";
-			this.txtDisplay.Size = new System.Drawing.Size(229, 192);
+			this.txtDisplay.Size = new System.Drawing.Size(705, 240);
 			this.txtDisplay.TabIndex = 0;
 			this.txtDisplay.TextChanged += new System.EventHandler(this.txtDisplay_TextChanged);
 			// 
 			// btnGetSituacaoAtual
 			// 
-			this.btnGetSituacaoAtual.Location = new System.Drawing.Point(219, 345);
+			this.btnGetSituacaoAtual.Location = new System.Drawing.Point(65, 356);
 			this.btnGetSituacaoAtual.Name = "btnGetSituacaoAtual";
 			this.btnGetSituacaoAtual.Size = new System.Drawing.Size(190, 51);
 			this.btnGetSituacaoAtual.TabIndex = 1;
-			this.btnGetSituacaoAtual.Text = "button1";
+			this.btnGetSituacaoAtual.Text = "Situação Atual";
 			this.btnGetSituacaoAtual.UseVisualStyleBackColor = true;
 			this.btnGetSituacaoAtual.Click += new System.EventHandler(this.btnAtual_Click);
 			// 
