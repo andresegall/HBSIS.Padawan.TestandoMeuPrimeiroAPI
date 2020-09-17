@@ -28,67 +28,70 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.fontDialog1 = new System.Windows.Forms.FontDialog();
-			this.txtUrl = new System.Windows.Forms.TextBox();
 			this.txtDisplay = new System.Windows.Forms.TextBox();
 			this.btnGetSituacaoAtual = new System.Windows.Forms.Button();
-			this.btnIncluirEstado = new System.Windows.Forms.Button();
+			this.btnPostNovoEstado = new System.Windows.Forms.Button();
+			this.btnGetSimulaEvolucaoCOVID = new System.Windows.Forms.Button();
+			this.btnPutCondicaoDeContorno = new System.Windows.Forms.Button();
 			this.SuspendLayout();
-			// 
-			// fontDialog1
-			// 
-			this.fontDialog1.Apply += new System.EventHandler(this.fontDialog1_Apply);
-			// 
-			// txtUrl
-			// 
-			this.txtUrl.Location = new System.Drawing.Point(167, 34);
-			this.txtUrl.Name = "txtUrl";
-			this.txtUrl.Size = new System.Drawing.Size(458, 23);
-			this.txtUrl.TabIndex = 0;
-			this.txtUrl.Text = "https://localhost:44360/simuladorTransmissaoCOVID19/getSituacaoAtual";
-			this.txtUrl.TextChanged += new System.EventHandler(this.txtUrl_TextChanged);
 			// 
 			// txtDisplay
 			// 
-			this.txtDisplay.Location = new System.Drawing.Point(65, 94);
+			this.txtDisplay.Location = new System.Drawing.Point(67, 38);
 			this.txtDisplay.Multiline = true;
 			this.txtDisplay.Name = "txtDisplay";
-			this.txtDisplay.Size = new System.Drawing.Size(705, 240);
+			this.txtDisplay.Size = new System.Drawing.Size(802, 290);
 			this.txtDisplay.TabIndex = 0;
-			this.txtDisplay.TextChanged += new System.EventHandler(this.txtDisplay_TextChanged);
 			// 
 			// btnGetSituacaoAtual
 			// 
-			this.btnGetSituacaoAtual.Location = new System.Drawing.Point(65, 356);
+			this.btnGetSituacaoAtual.Location = new System.Drawing.Point(67, 359);
 			this.btnGetSituacaoAtual.Name = "btnGetSituacaoAtual";
-			this.btnGetSituacaoAtual.Size = new System.Drawing.Size(190, 51);
+			this.btnGetSituacaoAtual.Size = new System.Drawing.Size(152, 56);
 			this.btnGetSituacaoAtual.TabIndex = 1;
 			this.btnGetSituacaoAtual.Text = "Situação Atual";
 			this.btnGetSituacaoAtual.UseVisualStyleBackColor = true;
-			this.btnGetSituacaoAtual.Click += new System.EventHandler(this.btnAtual_Click);
+			this.btnGetSituacaoAtual.Click += new System.EventHandler(this.btnGetSituacaoAtual_Click);
 			// 
-			// btnIncluirEstado
+			// btnPostNovoEstado
 			// 
-			this.btnIncluirEstado.Location = new System.Drawing.Point(261, 356);
-			this.btnIncluirEstado.Name = "btnIncluirEstado";
-			this.btnIncluirEstado.Size = new System.Drawing.Size(190, 51);
-			this.btnIncluirEstado.TabIndex = 1;
-			this.btnIncluirEstado.Text = "Incluir Estado";
-			this.btnIncluirEstado.UseVisualStyleBackColor = true;
-			this.btnIncluirEstado.Click += new System.EventHandler(this.btnAtual_Click);
+			this.btnPostNovoEstado.Location = new System.Drawing.Point(225, 359);
+			this.btnPostNovoEstado.Name = "btnPostNovoEstado";
+			this.btnPostNovoEstado.Size = new System.Drawing.Size(152, 56);
+			this.btnPostNovoEstado.TabIndex = 1;
+			this.btnPostNovoEstado.Text = "Incluir Estado";
+			this.btnPostNovoEstado.UseVisualStyleBackColor = true;
+			this.btnPostNovoEstado.Click += new System.EventHandler(this.btnPostNovoEstado_Click);
+			// 
+			// btnGetSimulaEvolucaoCOVID
+			// 
+			this.btnGetSimulaEvolucaoCOVID.Location = new System.Drawing.Point(383, 359);
+			this.btnGetSimulaEvolucaoCOVID.Name = "btnGetSimulaEvolucaoCOVID";
+			this.btnGetSimulaEvolucaoCOVID.Size = new System.Drawing.Size(152, 56);
+			this.btnGetSimulaEvolucaoCOVID.TabIndex = 1;
+			this.btnGetSimulaEvolucaoCOVID.Text = "Simular Evolução";
+			this.btnGetSimulaEvolucaoCOVID.UseVisualStyleBackColor = true;
+			this.btnGetSimulaEvolucaoCOVID.Click += new System.EventHandler(this.btnGetSimulaEvolucaoCOVID_Click);
+			// 
+			// btnPutCondicaoDeContorno
+			// 
+			this.btnPutCondicaoDeContorno.Location = new System.Drawing.Point(541, 359);
+			this.btnPutCondicaoDeContorno.Name = "btnPutCondicaoDeContorno";
+			this.btnPutCondicaoDeContorno.Size = new System.Drawing.Size(152, 56);
+			this.btnPutCondicaoDeContorno.TabIndex = 1;
+			this.btnPutCondicaoDeContorno.Text = "Condições de Contorno";
+			this.btnPutCondicaoDeContorno.UseVisualStyleBackColor = true;
+			this.btnPutCondicaoDeContorno.Click += new System.EventHandler(this.btnPutCondicaoDeContorno_Click);
 			// 
 			// MenuPrincipal
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.btnIncluirEstado);
+			this.ClientSize = new System.Drawing.Size(939, 483);
+			this.Controls.Add(this.btnPutCondicaoDeContorno);
+			this.Controls.Add(this.btnGetSimulaEvolucaoCOVID);
+			this.Controls.Add(this.btnPostNovoEstado);
 			this.Controls.Add(this.btnGetSituacaoAtual);
 			this.Controls.Add(this.txtDisplay);
-			this.Controls.Add(this.txtUrl);
 			this.Name = "MenuPrincipal";
-			this.Text = "Form1";
-			this.Load += new System.EventHandler(this.MenuPrincipal_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -101,6 +104,9 @@
 		private System.Windows.Forms.TextBox txtDisplay;
 		private System.Windows.Forms.Button btnGetSituacaoAtual;
 		private System.Windows.Forms.Button btnIncluirEstado;
+		private System.Windows.Forms.Button btnPostNovoEstado;
+		private System.Windows.Forms.Button btnGetSimulaEvolucaoCOVID;
+		private System.Windows.Forms.Button btnPutCondicaoDeContorno;
 	}
 }
 

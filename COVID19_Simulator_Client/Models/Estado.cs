@@ -10,5 +10,12 @@ namespace COVID19_Simulator_Client.Models
 		public int Curados { get; set; }
 		public int Mortos { get; set; }
 		public string Nome { get; set; }
+
+		public Estado()
+		{
+			Infectados = 0;
+			Curados = 0;
+			Mortos = 0;
+		}
 	}
 }

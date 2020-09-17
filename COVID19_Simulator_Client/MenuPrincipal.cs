@@ -20,24 +20,7 @@ namespace COVID19_Simulator_Client
 			InitializeComponent();
 		}
 
-		private void fontDialog1_Apply(object sender, EventArgs e)
-		{
-
-		}
-
-		private void MenuPrincipal_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtUrl_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		string URI = "";
-		int codigoProduto = 1;
-		private async void GetAllProdutos()
+		private async void GetAllEstados()
 		{
 			using (var response = await new HttpClient().GetAsync("https://localhost:44360/simuladorTransmissaoCOVID19/getSituacaoAtual"))
 			{
@@ -45,18 +28,70 @@ namespace COVID19_Simulator_Client
 					txtDisplay.Text = await response.Content.ReadAsStringAsync();
 
 				else
-					MessageBox.Show("Não foi possível obter o estado : " + response.StatusCode);
+					MessageBox.Show("Não foi possível obter a situação atual : " + response.StatusCode);
 			}
 		}
 
-		private void btnAtual_Click(object sender, EventArgs e)
+		private async void PostNewEstado()
 		{
-			GetAllProdutos();
+			var estado = new Estado() { Nome = "DF" };
+
+			var content = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
+			await new HttpClient().PostAsync("https://localhost:44360/simuladorTransmissaoCOVID19/postNovoEstado", content);
+
+			GetAllEstados();
 		}
 
-		private void txtDisplay_TextChanged(object sender, EventArgs e)
+		private async void GetSimulaEvolucaoCOVID()
 		{
+			int eita = 0;
 
+			using (var response = await new HttpClient().GetAsync("https://localhost:44360/simuladorTransmissaoCOVID19/SimulaEvolucaoCOVID?getSemanas=" + eita))
+			{
+				if (response.IsSuccessStatusCode)
+					txtDisplay.Text = await response.Content.ReadAsStringAsync();
+
+				else
+					MessageBox.Show("Não foi possível obter a simulação : " + response.StatusCode);
+			}
+		}
+
+		private async void PutCondicaoDeContorno()
+		{
+			var eita = "DF";
+			var estado = new Estado() { Infectados = 0, Curados = 0, Mortos = 0 };
+			var content = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
+
+			HttpResponseMessage responseMessage = await new HttpClient().PutAsJsonAsync("https://localhost:44360/simuladorTransmissaoCOVID19/upDateCondicaoDeContorno?nomeEstado=" + eita, content);
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				MessageBox.Show("Condições de contorno no estado atualizadas");
+			}
+			else
+			{
+				MessageBox.Show("Falha ao atualizar condições de contorno : " + responseMessage.StatusCode);
+			}
+			GetAllEstados();
+		}
+
+		private void btnGetSituacaoAtual_Click(object sender, EventArgs e)
+		{
+			GetAllEstados();
+		}
+
+		private void btnPostNovoEstado_Click(object sender, EventArgs e)
+		{
+			PostNewEstado();
+		}
+
+		private void btnGetSimulaEvolucaoCOVID_Click(object sender, EventArgs e)
+		{
+			GetSimulaEvolucaoCOVID();
+		}
+
+		private void btnPutCondicaoDeContorno_Click(object sender, EventArgs e)
+		{
+			PutCondicaoDeContorno();
 		}
 	}
 }
