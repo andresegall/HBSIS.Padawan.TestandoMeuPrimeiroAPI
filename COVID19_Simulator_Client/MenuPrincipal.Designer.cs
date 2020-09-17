@@ -30,7 +30,8 @@
 		{
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.txtUrl = new System.Windows.Forms.TextBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txtDisplay = new System.Windows.Forms.TextBox();
+			this.pnlDisplay = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
 			// fontDialog1
@@ -46,20 +47,28 @@
 			this.txtUrl.Text = "https://localhost:44360/simuladorTransmissaoCOVID19/getSituacaoAtual";
 			this.txtUrl.TextChanged += new System.EventHandler(this.txtUrl_TextChanged);
 			// 
-			// textBox1
+			// txtDisplay
 			// 
-			this.textBox1.Location = new System.Drawing.Point(273, 113);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(229, 192);
-			this.textBox1.TabIndex = 0;
+			this.txtDisplay.Location = new System.Drawing.Point(461, 113);
+			this.txtDisplay.Multiline = true;
+			this.txtDisplay.Name = "txtDisplay";
+			this.txtDisplay.Size = new System.Drawing.Size(229, 192);
+			this.txtDisplay.TabIndex = 0;
+			// 
+			// pnlDisplay
+			// 
+			this.pnlDisplay.Location = new System.Drawing.Point(65, 141);
+			this.pnlDisplay.Name = "pnlDisplay";
+			this.pnlDisplay.Size = new System.Drawing.Size(170, 164);
+			this.pnlDisplay.TabIndex = 1;
 			// 
 			// MenuPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.pnlDisplay);
+			this.Controls.Add(this.txtDisplay);
 			this.Controls.Add(this.txtUrl);
 			this.Name = "MenuPrincipal";
 			this.Text = "Form1";
@@ -73,7 +82,8 @@
 
 		private System.Windows.Forms.FontDialog fontDialog1;
 		private System.Windows.Forms.TextBox txtUrl;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txtDisplay;
+		private System.Windows.Forms.Panel pnlDisplay;
 	}
 }
 
