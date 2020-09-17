@@ -1,6 +1,6 @@
 ﻿namespace COVID19_Simulator_Client
 {
-	partial class Form1
+	partial class MenuPrincipal
 	{
 		/// <summary>
 		///  Required designer variable.
