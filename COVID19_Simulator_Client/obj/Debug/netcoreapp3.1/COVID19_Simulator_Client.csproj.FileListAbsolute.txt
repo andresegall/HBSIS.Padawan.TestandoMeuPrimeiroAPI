@@ -4,3 +4,16 @@ C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Si
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.csproj.GenerateResource.cache
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.AssemblyInfoInputs.cache
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.AssemblyInfo.cs
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\COVID19_Simulator_Client.deps.json
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\COVID19_Simulator_Client.runtimeconfig.json
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\COVID19_Simulator_Client.runtimeconfig.dev.json
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\COVID19_Simulator_Client.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\COVID19_Simulator_Client.pdb
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.csproj.CoreCompileInputs.cache
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.csproj.CopyComplete
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.pdb
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\COVID19_Simulator_Client\obj\Debug\netcoreapp3.1\COVID19_Simulator_Client.genruntimeconfig.cache

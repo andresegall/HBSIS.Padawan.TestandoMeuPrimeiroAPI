@@ -31,7 +31,7 @@
 			this.fontDialog1 = new System.Windows.Forms.FontDialog();
 			this.txtUrl = new System.Windows.Forms.TextBox();
 			this.txtDisplay = new System.Windows.Forms.TextBox();
-			this.btnAtual = new System.Windows.Forms.Button();
+			this.btnGetSituacaoAtual = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// fontDialog1
@@ -55,22 +55,22 @@
 			this.txtDisplay.Size = new System.Drawing.Size(229, 192);
 			this.txtDisplay.TabIndex = 0;
 			// 
-			// btnAtual
+			// btnGetSituacaoAtual
 			// 
-			this.btnAtual.Location = new System.Drawing.Point(219, 345);
-			this.btnAtual.Name = "btnAtual";
-			this.btnAtual.Size = new System.Drawing.Size(190, 51);
-			this.btnAtual.TabIndex = 1;
-			this.btnAtual.Text = "button1";
-			this.btnAtual.UseVisualStyleBackColor = true;
-			this.btnAtual.Click += new System.EventHandler(this.btnAtual_Click);
+			this.btnGetSituacaoAtual.Location = new System.Drawing.Point(219, 345);
+			this.btnGetSituacaoAtual.Name = "btnGetSituacaoAtual";
+			this.btnGetSituacaoAtual.Size = new System.Drawing.Size(190, 51);
+			this.btnGetSituacaoAtual.TabIndex = 1;
+			this.btnGetSituacaoAtual.Text = "button1";
+			this.btnGetSituacaoAtual.UseVisualStyleBackColor = true;
+			this.btnGetSituacaoAtual.Click += new System.EventHandler(this.btnAtual_Click);
 			// 
 			// MenuPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.btnAtual);
+			this.Controls.Add(this.btnGetSituacaoAtual);
 			this.Controls.Add(this.txtDisplay);
 			this.Controls.Add(this.txtUrl);
 			this.Name = "MenuPrincipal";
@@ -86,7 +86,7 @@
 		private System.Windows.Forms.FontDialog fontDialog1;
 		private System.Windows.Forms.TextBox txtUrl;
 		private System.Windows.Forms.TextBox txtDisplay;
-		private System.Windows.Forms.Button btnAtual;
+		private System.Windows.Forms.Button btnGetSituacaoAtual;
 	}
 }
 

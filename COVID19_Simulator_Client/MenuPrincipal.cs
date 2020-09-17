@@ -46,8 +46,8 @@ namespace COVID19_Simulator_Client
 				{
 					if (response.IsSuccessStatusCode)
 					{
-						var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-						txtDisplay.Text = Convert.ToString(JsonConvert.DeserializeObject<Estado[]>(ProdutoJsonString).ToList());
+						var EstadoJsonString = await response.Content.ReadAsStringAsync();
+						txtDisplay.Text = Convert.ToString(JsonConvert.DeserializeObject<Estado[]>(EstadoJsonString).ToList());
 					}
 					else
 					{
