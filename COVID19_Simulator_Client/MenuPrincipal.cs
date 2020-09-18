@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using COVID19_Simulator_Client.Models;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace COVID19_Simulator_Client
@@ -34,11 +35,12 @@ namespace COVID19_Simulator_Client
 
 		private async void PostNewEstado()
 		{
-			var estado = new Estado() { Nome = "DF" };
+			var estado = new Estado() { Nome = txtNome.Text };
 
 			var content = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
 			await new HttpClient().PostAsync("https://localhost:44360/simuladorTransmissaoCOVID19/postNovoEstado", content);
 
+			MessageBox.Show("Estado incluído com sucesso!");
 			GetAllEstados();
 		}
 
@@ -49,8 +51,10 @@ namespace COVID19_Simulator_Client
 			using (var response = await new HttpClient().GetAsync("https://localhost:44360/simuladorTransmissaoCOVID19/SimulaEvolucaoCOVID?getSemanas=" + eita))
 			{
 				if (response.IsSuccessStatusCode)
+				{
 					txtDisplay.Text = await response.Content.ReadAsStringAsync();
-
+					MessageBox.Show("Simulação executada com sucesso!");
+				}
 				else
 					MessageBox.Show("Não foi possível obter a simulação : " + response.StatusCode);
 			}
@@ -58,18 +62,32 @@ namespace COVID19_Simulator_Client
 
 		private async void PutCondicaoDeContorno()
 		{
-			var eita = "DF";
-			var estado = new Estado() { Infectados = 0, Curados = 0, Mortos = 0 };
+			var estado = new Estado() { Infectados = 1, Curados = 0, Mortos = 0 };
 			var content = new StringContent(JsonConvert.SerializeObject(estado), Encoding.UTF8, "application/json");
 
-			HttpResponseMessage responseMessage = await new HttpClient().PutAsJsonAsync("https://localhost:44360/simuladorTransmissaoCOVID19/upDateCondicaoDeContorno?nomeEstado=" + eita, content);
+			HttpResponseMessage responseMessage = await new HttpClient().PutAsJsonAsync("https://localhost:44360/simuladorTransmissaoCOVID19/upDateCondicaoDeContorno?nomeEstado=" + txtNome.Text, content);
+
 			if (responseMessage.IsSuccessStatusCode)
-			{
 				MessageBox.Show("Condições de contorno no estado atualizadas");
-			}
+			
 			else
-			{
 				MessageBox.Show("Falha ao atualizar condições de contorno : " + responseMessage.StatusCode);
+			
+			GetAllEstados();
+		}
+
+		private async void DeleteEstado()
+		{
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri("https://localhost:44360/simuladorTransmissaoCOVID19/deleteEstado?nomeEstado=" + txtNome.Text);
+				HttpResponseMessage responseMessage = await client.DeleteAsync(client.BaseAddress);
+				
+				if (responseMessage.IsSuccessStatusCode)
+					MessageBox.Show("Estado excluído com sucesso!");
+				
+				else
+					MessageBox.Show("Falha ao excluir o estado  : " + responseMessage.StatusCode);
 			}
 			GetAllEstados();
 		}
@@ -92,6 +110,11 @@ namespace COVID19_Simulator_Client
 		private void btnPutCondicaoDeContorno_Click(object sender, EventArgs e)
 		{
 			PutCondicaoDeContorno();
+		}
+
+		private void btnDeleteEstado_Click(object sender, EventArgs e)
+		{
+			DeleteEstado();
 		}
 	}
 }

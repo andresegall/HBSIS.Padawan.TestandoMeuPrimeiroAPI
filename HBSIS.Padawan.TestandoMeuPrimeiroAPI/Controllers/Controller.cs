@@ -15,6 +15,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	public class Controller : ControllerBase
 	{
 		public static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
+		public static Simulacao meajudaDEEEUS;
 
 		[HttpGet]
 		[Route("getSituacaoAtual")]
@@ -65,11 +66,20 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 			nomeEstado = Verifica.NomeEstado(contexto, nomeEstado);
 
 			List<Estado> removeList = contexto.Where(q => q.ID > 0).ToList();
-			removeList.Remove(removeList.First(q => q.Nome == nomeEstado));
+
+			if (nomeEstado != "Nome de estado inválido!")
+				removeList.Remove(removeList.First(q => q.Nome == nomeEstado));
 
 			contexto = removeList;
 
 			return nomeEstado == "Nome de estado inválido!" ? Ok(nomeEstado) : Ok(contexto);
+		}
+
+		[HttpGet]
+		[Route("getFinalizaSimulacao")]
+		public ActionResult GetFinalizaSimulacao()
+		{
+			return Ok(contexto);
 		}
 	}
 }

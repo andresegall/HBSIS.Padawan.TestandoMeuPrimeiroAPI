@@ -33,6 +33,9 @@
 			this.btnPostNovoEstado = new System.Windows.Forms.Button();
 			this.btnGetSimulaEvolucaoCOVID = new System.Windows.Forms.Button();
 			this.btnPutCondicaoDeContorno = new System.Windows.Forms.Button();
+			this.btnDeleteEstado = new System.Windows.Forms.Button();
+			this.txtNome = new System.Windows.Forms.TextBox();
+			this.txtEstado = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// txtDisplay
@@ -40,7 +43,8 @@
 			this.txtDisplay.Location = new System.Drawing.Point(67, 38);
 			this.txtDisplay.Multiline = true;
 			this.txtDisplay.Name = "txtDisplay";
-			this.txtDisplay.Size = new System.Drawing.Size(802, 290);
+			this.txtDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtDisplay.Size = new System.Drawing.Size(468, 290);
 			this.txtDisplay.TabIndex = 0;
 			// 
 			// btnGetSituacaoAtual
@@ -83,9 +87,37 @@
 			this.btnPutCondicaoDeContorno.UseVisualStyleBackColor = true;
 			this.btnPutCondicaoDeContorno.Click += new System.EventHandler(this.btnPutCondicaoDeContorno_Click);
 			// 
+			// btnDeleteEstado
+			// 
+			this.btnDeleteEstado.Location = new System.Drawing.Point(717, 359);
+			this.btnDeleteEstado.Name = "btnDeleteEstado";
+			this.btnDeleteEstado.Size = new System.Drawing.Size(152, 56);
+			this.btnDeleteEstado.TabIndex = 1;
+			this.btnDeleteEstado.Text = "Excluir Estado";
+			this.btnDeleteEstado.UseVisualStyleBackColor = true;
+			this.btnDeleteEstado.Click += new System.EventHandler(this.btnDeleteEstado_Click);
+			// 
+			// txtNome
+			// 
+			this.txtNome.Location = new System.Drawing.Point(670, 38);
+			this.txtNome.Name = "txtNome";
+			this.txtNome.Size = new System.Drawing.Size(144, 23);
+			this.txtNome.TabIndex = 2;
+			// 
+			// txtEstado
+			// 
+			this.txtEstado.Location = new System.Drawing.Point(670, 79);
+			this.txtEstado.Multiline = true;
+			this.txtEstado.Name = "txtEstado";
+			this.txtEstado.Size = new System.Drawing.Size(144, 127);
+			this.txtEstado.TabIndex = 2;
+			// 
 			// MenuPrincipal
 			// 
 			this.ClientSize = new System.Drawing.Size(939, 483);
+			this.Controls.Add(this.txtEstado);
+			this.Controls.Add(this.txtNome);
+			this.Controls.Add(this.btnDeleteEstado);
 			this.Controls.Add(this.btnPutCondicaoDeContorno);
 			this.Controls.Add(this.btnGetSimulaEvolucaoCOVID);
 			this.Controls.Add(this.btnPostNovoEstado);
@@ -107,6 +139,9 @@
 		private System.Windows.Forms.Button btnPostNovoEstado;
 		private System.Windows.Forms.Button btnGetSimulaEvolucaoCOVID;
 		private System.Windows.Forms.Button btnPutCondicaoDeContorno;
+		private System.Windows.Forms.Button btnDeleteEstado;
+		private System.Windows.Forms.TextBox txtNome;
+		private System.Windows.Forms.TextBox txtEstado;
 	}
 }
 
