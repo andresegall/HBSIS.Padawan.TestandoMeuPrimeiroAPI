@@ -14,9 +14,6 @@ C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Pada
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.csprojAssemblyReference.cache
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.AssemblyInfoInputs.cache
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.AssemblyInfo.cs
-C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.csproj.CoreCompileInputs.cache
-C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.RazorTargetAssemblyInfo.cache
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.csproj.CopyComplete
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\staticwebassets\COVID19_Simulator_Server.StaticWebAssets.Manifest.cache
@@ -24,3 +21,12 @@ C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Pada
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.dll
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.pdb
 C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.genruntimeconfig.cache
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.csproj.CoreCompileInputs.cache
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\andre.ando\source\repos\HBSIS.Padawan.TestandoMeuPrimeiroAPI\HBSIS.Padawan.TestandoMeuPrimeiroAPI\obj\Debug\netcoreapp3.1\COVID19_Simulator_Server.MvcApplicationPartsAssemblyInfo.cache

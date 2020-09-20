@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models;
 
-namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI
+namespace HBSIS.Padawan.SimulacaoCOVIDAPI.Utilitarios
 {
-	public static class Simulacao
+	public static class Simulando
 	{
 		public static void AtualizaContexto(ref IEnumerable<Estado> contexto, int tempo)
 		{

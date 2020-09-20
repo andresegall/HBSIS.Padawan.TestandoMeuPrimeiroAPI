@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using COVID19_Simulator_Server.BD;
 using HBSIS.Padawan.SimulacaoCOVIDAPI;
 using HBSIS.Padawan.SimulacaoCOVIDAPI.Utilitarios;
 using HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models;
@@ -14,8 +16,8 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	[Route("simuladorTransmissaoCOVID19")]
 	public class Controller : ControllerBase
 	{
-		public static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
-		public static Simulacao meajudaDEEEUS;
+		static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
+		int contaSemanas = 0;
 
 		[HttpGet]
 		[Route("getSituacaoAtual")]
@@ -40,8 +42,9 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		public ActionResult GetSimulacao(string getSemanas)
 		{
 			var semanas = Verifica.Semanas(contexto, getSemanas);
+			contaSemanas = semanas;
 
-			Simulacao.AtualizaContexto(ref contexto, semanas);
+			Simulando.AtualizaContexto(ref contexto, semanas);
 
 			return semanas == 0 ? Ok("Simulação não realizada!") : Ok(contexto);
 		}
@@ -50,36 +53,42 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("upDateCondicaoDeContorno")]
 		public ActionResult UpDateCondicaoDeContorno(string nomeEstado, [FromBody] Estado estado)
 		{
-			nomeEstado = Verifica.NomeEstado(contexto, nomeEstado);
+			bool nomeValido = Verifica.NomeEstado(contexto, nomeEstado) != "Nome de estado inválido!";
 
-			contexto.First(q => q.Nome == nomeEstado).Infectados = estado.Infectados;
-			contexto.First(q => q.Nome == nomeEstado).Curados = estado.Curados;
-			contexto.First(q => q.Nome == nomeEstado).Mortos = estado.Mortos;
+			if (nomeValido)
+			{
+				contexto.First(q => q.Nome == nomeEstado).Infectados = estado.Infectados;
+				contexto.First(q => q.Nome == nomeEstado).Curados = estado.Curados;
+				contexto.First(q => q.Nome == nomeEstado).Mortos = estado.Mortos;
+			}
 
-			return nomeEstado == "Nome de estado inválido!" ? Ok(nomeEstado) : Ok(contexto);
+			return nomeValido ? Ok(contexto) : Ok("Nome de estado inválido!");
 		}
 
 		[HttpDelete]
 		[Route("deleteEstado")]
 		public ActionResult DeleteEstado(string nomeEstado)
 		{
-			nomeEstado = Verifica.NomeEstado(contexto, nomeEstado);
+			bool nomeValido = Verifica.NomeEstado(contexto, nomeEstado) != "Nome de estado inválido!";
 
-			List<Estado> removeList = contexto.Where(q => q.ID > 0).ToList();
-
-			if (nomeEstado != "Nome de estado inválido!")
-				removeList.Remove(removeList.First(q => q.Nome == nomeEstado));
-
-			contexto = removeList;
-
-			return nomeEstado == "Nome de estado inválido!" ? Ok(nomeEstado) : Ok(contexto);
+			return nomeValido ?
+				Ok(contexto = contexto.Where(q => q.Nome != nomeEstado)) : Ok("Nome de estado inválido!");
 		}
 
 		[HttpGet]
 		[Route("getFinalizaSimulacao")]
-		public ActionResult GetFinalizaSimulacao()
+		public ActionResult GetFinalizaSimulacao(string nome, string descricao)
 		{
-			return Ok(contexto);
+			var simulacaoFinal = new SimulacaoFinal()
+			{
+				Nome = nome,
+				Descricao = descricao,
+				Contexto = contexto,
+				Semanas = contaSemanas
+			};
+
+			Registrar.Simulacao(simulacaoFinal);
+			return Ok(simulacaoFinal);
 		}
 	}
 }

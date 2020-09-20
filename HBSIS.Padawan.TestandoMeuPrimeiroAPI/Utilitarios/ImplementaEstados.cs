@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models;
 
-namespace HBSIS.Padawan.SimulacaoCOVIDAPI
+namespace HBSIS.Padawan.SimulacaoCOVIDAPI.Utilitarios
 {
 	public class ImplementaEstados
 	{
