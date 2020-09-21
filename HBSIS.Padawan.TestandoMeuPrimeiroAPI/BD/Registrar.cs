@@ -13,7 +13,6 @@ namespace COVID19_Simulator_Server.BD
 		{
 			Conexao conexao = new Conexao();
 			SqlCommand command = new SqlCommand();
-			string mensagem;
 
 			command.CommandText = "insert into SIMULACAO (id, infectados, curados, mortos) values (@id, @infectados, @curados, @mortos)";
 			command.Parameters.AddWithValue("@id", simulacao.ID);
@@ -29,12 +28,9 @@ namespace COVID19_Simulator_Server.BD
 				command.Connection = conexao.Conectar();
 				command.ExecuteNonQuery();
 				conexao.Desconectar();
-				mensagem = "Cadstrado com sucesso!";
 			}
-
 			catch (SqlException)
 			{
-				mensagem = "Erro de conexão!";
 			}
 		}
 	}

@@ -14,7 +14,6 @@ namespace COVID19_Simulator_Server.BD
 		{
 			conexao.ConnectionString = @"Data Source=NT-04282\SQLEXPRESS;Initial Catalog=COVID19Simulator;Integrated Security=True";
 		}
-
 		public SqlConnection Conectar()
 		{
 			if (conexao.State == System.Data.ConnectionState.Closed)
@@ -22,7 +21,6 @@ namespace COVID19_Simulator_Server.BD
 
 			return conexao;
 		}
-
 		public void Desconectar()
 		{
 			if (conexao.State == System.Data.ConnectionState.Open)
