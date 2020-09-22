@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models
 {
-	public class SimulacaoFinal
+	public class Simulacao
 	{
 		public int ID { get; set; }
 		public string Nome { get; set; }
@@ -17,7 +17,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models
 		public int Curados { get; set; }
 		public int Mortos { get; set; }
 
-		public SimulacaoFinal()
+		public Simulacao()
 		{
 			ID = 0;
 			Nome = "";

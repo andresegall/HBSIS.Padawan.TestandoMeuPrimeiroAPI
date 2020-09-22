@@ -9,7 +9,7 @@ namespace COVID19_Simulator_Server.BD
 {
 	public class Registrar
 	{
-		public static void Simulacao(SimulacaoFinal simulacao)
+		public static void Simulacao(Simulacao simulacao)
 		{
 			Conexao conexao = new Conexao();
 			SqlCommand command = new SqlCommand();

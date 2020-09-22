@@ -7,7 +7,7 @@ namespace COVID19_Simulator_Server.BD
 {
 	public class Buscar
 	{
-		public static List<SimulacaoFinal> Simulacao()
+		public static List<Simulacao> Simulacao()
 		{
 			Conexao conexao = new Conexao();
 			SqlCommand command = new SqlCommand();
@@ -16,13 +16,13 @@ namespace COVID19_Simulator_Server.BD
 			command.Connection = conexao.Conectar();
 
 			SqlDataReader data = command.ExecuteReader();
-			List<SimulacaoFinal> listaSimulacoes = new List<SimulacaoFinal>();
+			List<Simulacao> listaSimulacoes = new List<Simulacao>();
 
 			if (data.HasRows)
 			{
 				while (data.Read())
 				{
-					listaSimulacoes.Add(new SimulacaoFinal() 
+					listaSimulacoes.Add(new Simulacao() 
 					{
 						ID = data.GetInt32(0),
 						Semanas = data.GetInt32(1),

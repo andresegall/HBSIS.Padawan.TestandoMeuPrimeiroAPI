@@ -12,7 +12,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	public class Controller : ControllerBase
 	{
 		static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
-		static SimulacaoFinal simulacaoFinal = new SimulacaoFinal(){ ID = Buscar.Simulacao().Last(q => q.ID>=0).ID+1 };
+		static Simulacao simulacaoFinal = new Simulacao(){ ID = Buscar.Simulacao().Last(q => q.ID>=0).ID+1 };
 		static int contaSemanas = 0;
 		static int infectados = 0;
 		static int curados = 0;
@@ -119,8 +119,8 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		}
 
 		[HttpGet]
-		[Route("getFinalizaSimulacaoAnterior")]
-		public ActionResult GetFinalizaSimulacaoAnterior()
+		[Route("getAtualizaSimulacaoAnterior")]
+		public ActionResult GetAtualizaSimulacaoAnterior()
 		{
 			simulacaoFinal.Contexto = contexto;
 			simulacaoFinal.Semanas = contaSemanas;
@@ -128,7 +128,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 			simulacaoFinal.Curados = curados;
 			simulacaoFinal.Mortos = mortos;
 
-			Registrar.Simulacao(simulacaoFinal);
+			Atualizar.Simulacao(simulacaoFinal);
 
 			foreach (var estado in contexto)
 				Registrar.Estados(estado, simulacaoFinal.ID);
