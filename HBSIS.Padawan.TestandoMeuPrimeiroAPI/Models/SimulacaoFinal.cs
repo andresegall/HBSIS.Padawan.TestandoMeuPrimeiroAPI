@@ -22,7 +22,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models
 			ID = 0;
 			Nome = "";
 			Descricao = "";
-			Data = DateTime.UtcNow;
+			Data = DateTime.Now;
 			Contexto = new List<Estado>();
 			Semanas = 0;
 			Infectados = 0;

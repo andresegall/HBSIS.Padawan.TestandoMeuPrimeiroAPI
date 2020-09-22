@@ -22,7 +22,7 @@ namespace HBSIS.Padawan.SimulacaoCOVIDAPI.Utilitarios
 			return nome;
 		}
 
-		public static int Semanas(IEnumerable<Estado> contexto, string getSemanas)
+		public static int Semanas(string getSemanas)
 		{
 			int semanas;
 			try

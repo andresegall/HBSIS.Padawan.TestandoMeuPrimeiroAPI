@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using COVID19_Simulator_Server.BD;
-using HBSIS.Padawan.SimulacaoCOVIDAPI;
 using HBSIS.Padawan.SimulacaoCOVIDAPI.Utilitarios;
 using HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 {
@@ -17,7 +12,10 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	public class Controller : ControllerBase
 	{
 		static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
-		int contaSemanas = 0;
+		static int contaSemanas = 0;
+		static int infectados = 0;
+		static int curados = 0;
+		static int mortos = 0;
 
 		[HttpGet]
 		[Route("getSituacaoAtual")]
@@ -31,9 +29,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		public ActionResult PostNovoEstado([FromBody] Estado estado)
 		{
 			estado.ID = contexto.Last(q => q.ID > 0).ID + 1;
-
 			contexto = contexto.Append(estado);
-
 			return Ok(contexto);
 		}
 
@@ -41,38 +37,42 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("SimulaEvolucaoCOVID")]
 		public ActionResult GetSimulacao(string getSemanas)
 		{
-			var semanas = Verifica.Semanas(contexto, getSemanas);
-			contaSemanas = semanas;
+			contaSemanas += Verifica.Semanas(getSemanas);
 
-			Simulando.AtualizaContexto(ref contexto, semanas);
+			Simulando.AtualizaContexto(ref contexto, Verifica.Semanas(getSemanas));
 
-			return semanas == 0 ? Ok("Simulação não realizada!") : Ok(contexto);
+			foreach (var estado in contexto)
+			{
+				infectados += estado.Infectados;
+				curados += estado.Curados;
+				mortos += estado.Mortos;
+			}
+
+			return Verifica.Semanas(getSemanas) == 0 ?
+				Ok("Nenhuma alteração realizada...") : Ok(contexto);
 		}
 
 		[HttpPut]
 		[Route("upDateCondicaoDeContorno")]
-		public ActionResult UpDateCondicaoDeContorno(string nomeEstado, [FromBody] Estado estado)
+		public ActionResult UpDateCondicaoDeContorno(string nome, [FromBody] Estado estado)
 		{
-			bool nomeValido = Verifica.NomeEstado(contexto, nomeEstado) != "Nome de estado inválido!";
-
+			bool nomeValido = Verifica.NomeEstado(contexto, nome) != "Nome de estado inválido!";
 			if (nomeValido)
 			{
-				contexto.First(q => q.Nome == nomeEstado).Infectados = estado.Infectados;
-				contexto.First(q => q.Nome == nomeEstado).Curados = estado.Curados;
-				contexto.First(q => q.Nome == nomeEstado).Mortos = estado.Mortos;
+				contexto.First(q => q.Nome == nome).Infectados = estado.Infectados;
+				contexto.First(q => q.Nome == nome).Curados = estado.Curados;
+				contexto.First(q => q.Nome == nome).Mortos = estado.Mortos;
 			}
-
 			return nomeValido ? Ok(contexto) : Ok("Nome de estado inválido!");
 		}
 
 		[HttpDelete]
 		[Route("deleteEstado")]
-		public ActionResult DeleteEstado(string nomeEstado)
+		public ActionResult DeleteEstado(string nome)
 		{
-			bool nomeValido = Verifica.NomeEstado(contexto, nomeEstado) != "Nome de estado inválido!";
-
+			bool nomeValido = Verifica.NomeEstado(contexto, nome) != "Nome de estado inválido!";
 			return nomeValido ?
-				Ok(contexto = contexto.Where(q => q.Nome != nomeEstado)) : Ok("Nome de estado inválido!");
+				Ok(contexto = contexto.Where(q => q.Nome != nome)) : Ok("Nome de estado inválido!");
 		}
 
 		[HttpGet]
@@ -81,14 +81,28 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		{
 			var simulacaoFinal = new SimulacaoFinal()
 			{
+				ID = 999,
 				Nome = nome,
 				Descricao = descricao,
 				Contexto = contexto,
-				Semanas = contaSemanas
+				Semanas = contaSemanas,
+				Infectados = infectados,
+				Curados = curados,
+				Mortos = mortos
 			};
-
 			Registrar.Simulacao(simulacaoFinal);
+
+			foreach (var estado in contexto)
+				Registrar.Estados(estado, simulacaoFinal.ID);
+
 			return Ok(simulacaoFinal);
+		}
+
+		[HttpGet]
+		[Route("getSimulacoesAnteriores")]
+		public ActionResult GetSimulacoesAnteriores()
+		{
+			return Ok(Buscar.Simulacao());
 		}
 	}
 }
