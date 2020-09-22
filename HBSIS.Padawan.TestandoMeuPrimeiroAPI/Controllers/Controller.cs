@@ -12,7 +12,6 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	public class Controller : ControllerBase
 	{
 		static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
-		static IEnumerable<SimulacaoFinal> buscaSimulacoes;
 		static SimulacaoFinal simulacaoFinal = new SimulacaoFinal(){ ID = Buscar.Simulacao().Last(q => q.ID>=0).ID+1 };
 		static int contaSemanas = 0;
 		static int infectados = 0;
@@ -78,8 +77,8 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		}
 
 		[HttpGet]
-		[Route("getFinalizaSimulacao")]
-		public ActionResult GetFinalizaSimulacao(string nome, string descricao)
+		[Route("getFinalizaNovaSimulacao")]
+		public ActionResult GetFinalizaNovaSimulacao(string nome, string descricao)
 		{
 			simulacaoFinal.Nome = nome;
 			simulacaoFinal.Descricao = descricao;
@@ -101,15 +100,39 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("getSimulacoesAnteriores")]
 		public ActionResult GetSimulacoesAnteriores()
 		{
-			buscaSimulacoes = Buscar.Simulacao();
-			return Ok(buscaSimulacoes);
+			return Ok(Buscar.Simulacao());
 		}
 
 		[HttpGet]
 		[Route("getSelecionaSimulacaoAnterior")]
 		public ActionResult getSelecionaSimulacaoAnterior(int id)
 		{
-			simulacaoFinal = buscaSimulacoes.First(q => q.ID == id);
+			simulacaoFinal = Buscar.Simulacao().First(q => q.ID == id);
+			simulacaoFinal.Contexto = Buscar.Estados(id);
+
+			contexto = simulacaoFinal.Contexto;
+			contaSemanas = simulacaoFinal.Semanas;
+			infectados = simulacaoFinal.Infectados;
+			curados = simulacaoFinal.Curados;
+			mortos = simulacaoFinal.Mortos;
+			return Ok(simulacaoFinal);
+		}
+
+		[HttpGet]
+		[Route("getFinalizaSimulacaoAnterior")]
+		public ActionResult GetFinalizaSimulacaoAnterior()
+		{
+			simulacaoFinal.Contexto = contexto;
+			simulacaoFinal.Semanas = contaSemanas;
+			simulacaoFinal.Infectados = infectados;
+			simulacaoFinal.Curados = curados;
+			simulacaoFinal.Mortos = mortos;
+
+			Registrar.Simulacao(simulacaoFinal);
+
+			foreach (var estado in contexto)
+				Registrar.Estados(estado, simulacaoFinal.ID);
+
 			return Ok(simulacaoFinal);
 		}
 	}

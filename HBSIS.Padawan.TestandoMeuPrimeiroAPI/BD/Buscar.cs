@@ -43,5 +43,39 @@ namespace COVID19_Simulator_Server.BD
 			conexao.Desconectar();
 			return listaSimulacoes;
 		}
+
+		public static List<Estado> Estados(int idSimulacao)
+		{
+			Conexao conexao = new Conexao();
+			SqlCommand command = new SqlCommand();
+
+			command.CommandText = $"select * from ESTADO where simulacao = {idSimulacao}";
+			command.Connection = conexao.Conectar();
+
+			SqlDataReader data = command.ExecuteReader();
+			List<Estado> listaEstados = new List<Estado>();
+
+			if (data.HasRows)
+			{
+				while (data.Read())
+				{
+					listaEstados.Add(new Estado()
+					{
+						ID = data.GetInt32(0),
+						Infectados = data.GetInt32(2),
+						Curados = data.GetInt32(3),
+						Mortos = data.GetInt32(4),
+						Nome = data.GetString(5),
+					});
+				}
+			}
+			else
+			{
+				Console.WriteLine("No rows found.");
+			}
+
+			conexao.Desconectar();
+			return listaEstados;
+		}
 	}
 }
