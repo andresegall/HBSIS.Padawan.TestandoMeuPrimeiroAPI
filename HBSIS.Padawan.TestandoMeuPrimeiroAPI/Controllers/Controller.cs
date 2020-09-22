@@ -12,6 +12,8 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	public class Controller : ControllerBase
 	{
 		static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
+		static IEnumerable<SimulacaoFinal> buscaSimulacoes;
+		static SimulacaoFinal simulacaoFinal = new SimulacaoFinal(){ ID = Buscar.Simulacao().Last(q => q.ID>=0).ID+1 };
 		static int contaSemanas = 0;
 		static int infectados = 0;
 		static int curados = 0;
@@ -79,17 +81,14 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("getFinalizaSimulacao")]
 		public ActionResult GetFinalizaSimulacao(string nome, string descricao)
 		{
-			var simulacaoFinal = new SimulacaoFinal()
-			{
-				ID = 999,
-				Nome = nome,
-				Descricao = descricao,
-				Contexto = contexto,
-				Semanas = contaSemanas,
-				Infectados = infectados,
-				Curados = curados,
-				Mortos = mortos
-			};
+			simulacaoFinal.Nome = nome;
+			simulacaoFinal.Descricao = descricao;
+			simulacaoFinal.Contexto = contexto;
+			simulacaoFinal.Semanas = contaSemanas;
+			simulacaoFinal.Infectados = infectados;
+			simulacaoFinal.Curados = curados;
+			simulacaoFinal.Mortos = mortos;
+
 			Registrar.Simulacao(simulacaoFinal);
 
 			foreach (var estado in contexto)
@@ -102,7 +101,16 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("getSimulacoesAnteriores")]
 		public ActionResult GetSimulacoesAnteriores()
 		{
-			return Ok(Buscar.Simulacao());
+			buscaSimulacoes = Buscar.Simulacao();
+			return Ok(buscaSimulacoes);
+		}
+
+		[HttpGet]
+		[Route("getSelecionaSimulacaoAnterior")]
+		public ActionResult getSelecionaSimulacaoAnterior(int id)
+		{
+			simulacaoFinal = buscaSimulacoes.First(q => q.ID == id);
+			return Ok(simulacaoFinal);
 		}
 	}
 }

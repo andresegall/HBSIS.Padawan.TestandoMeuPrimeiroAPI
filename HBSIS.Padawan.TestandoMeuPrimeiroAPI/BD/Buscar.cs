@@ -1,38 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models;
 
 namespace COVID19_Simulator_Server.BD
 {
 	public class Buscar
 	{
-		public static string Simulacao()
+		public static List<SimulacaoFinal> Simulacao()
 		{
 			Conexao conexao = new Conexao();
 			SqlCommand command = new SqlCommand();
-			string teste = "";
 
-			command.CommandText = "select id from SIMULACAO";
-
+			command.CommandText = "select * from SIMULACAO";
 			command.Connection = conexao.Conectar();
 
 			SqlDataReader data = command.ExecuteReader();
-			DataTable schemaTable = data.GetSchemaTable();
+			List<SimulacaoFinal> listaSimulacoes = new List<SimulacaoFinal>();
 
-			foreach (DataRow row in schemaTable.Rows)
+			if (data.HasRows)
 			{
-				foreach (DataColumn column in schemaTable.Columns)
+				while (data.Read())
 				{
-					teste = ($"{column.ColumnName} = {row[column]}");
+					listaSimulacoes.Add(new SimulacaoFinal() 
+					{
+						ID = data.GetInt32(0),
+						Semanas = data.GetInt32(1),
+						Infectados = data.GetInt32(2),
+						Curados = data.GetInt32(3),
+						Mortos = data.GetInt32(4),
+						Data = data.GetDateTime(5),
+						Nome = data.GetString(6),
+						Descricao = data.GetString(7)
+					});
 				}
+			}
+			else
+			{
+				Console.WriteLine("No rows found.");
 			}
 
 			conexao.Desconectar();
-			return teste;
+			return listaSimulacoes;
 		}
 	}
 }
