@@ -11,7 +11,6 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	[Route("simuladorTransmissaoCOVID19")]
 	public class Controller : ControllerBase
 	{
-		//static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
 		static Simulacao simulacaoFinal = new Simulacao() { ID = Buscar.Simulacao().Last(q => q.ID >= 0).ID + 1 };
 
 		[HttpGet]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HBSIS.Padawan.SimulacaoCOVIDAPI.Utilitarios;
 
 namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models
 {
@@ -23,7 +24,7 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Models
 			Nome = "";
 			Descricao = "";
 			Data = DateTime.Now;
-			Contexto = new List<Estado>();
+			Contexto = ImplementaEstados.Brasil();
 			Semanas = 0;
 			Infectados = 0;
 			Curados = 0;
