@@ -40,5 +40,32 @@ namespace COVID19_Simulator_Server.BD
 			{
 			}
 		}
+		public static void Estado(Estado estado, int idSimulacao)
+		{
+			Conexao conexao = new Conexao();
+			SqlCommand command = new SqlCommand();
+
+			command.Parameters.AddWithValue("@infectados", estado.Infectados);
+			command.Parameters.AddWithValue("@curados", estado.Curados);
+			command.Parameters.AddWithValue("@mortos", estado.Mortos);
+			command.Parameters.AddWithValue("@simulacao", idSimulacao);
+			command.Parameters.AddWithValue("@id", estado.ID);
+
+			try
+			{
+				command.Connection = conexao.Conectar();
+				command.CommandText = ($"update ESTADO set infectados = @infectados where (id = @id and simulacao = @simulacao);");
+				command.ExecuteNonQuery();
+				command.CommandText = ($"update ESTADO set curados = @curados where (id = @id and simulacao = @simulacao);");
+				command.ExecuteNonQuery();
+				command.CommandText = ($"update ESTADO set mortos = @mortos where (id = @id and simulacao = @simulacao);");
+				command.ExecuteNonQuery();
+				conexao.Desconectar();
+			}
+			catch (SqlException)
+			{
+			}
+		}
+
 	}
 }

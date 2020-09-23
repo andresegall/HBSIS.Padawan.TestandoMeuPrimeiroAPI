@@ -110,9 +110,8 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		{
 			Atualizar.Simulacao(simulacaoFinal);
 
-			//TEM QUE ARRUMAR ESSA PARTE*************
 			foreach (var estado in simulacaoFinal.Contexto)
-				Registrar.Estados(estado, simulacaoFinal.ID);
+				Atualizar.Estado(estado, simulacaoFinal.ID);
 
 			return Ok(simulacaoFinal);
 		}
