@@ -11,69 +11,67 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 	[Route("simuladorTransmissaoCOVID19")]
 	public class Controller : ControllerBase
 	{
-		static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
-		static Simulacao simulacaoFinal = new Simulacao(){ ID = Buscar.Simulacao().Last(q => q.ID>=0).ID+1 };
-		static int contaSemanas = 0;
-		static int infectados = 0;
-		static int curados = 0;
-		static int mortos = 0;
+		//static IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
+		static Simulacao simulacaoFinal = new Simulacao() { ID = Buscar.Simulacao().Last(q => q.ID >= 0).ID + 1 };
 
 		[HttpGet]
 		[Route("getSituacaoAtual")]
 		public ActionResult GetSituacaoAtual()
 		{
-			return Ok(contexto);
+			return Ok(simulacaoFinal.Contexto);
 		}
 
 		[HttpPost]
 		[Route("postNovoEstado")]
 		public ActionResult PostNovoEstado([FromBody] Estado estado)
 		{
-			estado.ID = contexto.Last(q => q.ID > 0).ID + 1;
-			contexto = contexto.Append(estado);
-			return Ok(contexto);
+			estado.ID = simulacaoFinal.Contexto.Last(q => q.ID > 0).ID + 1;
+			simulacaoFinal.Contexto = simulacaoFinal.Contexto.Append(estado);
+			return Ok(simulacaoFinal.Contexto);
 		}
 
 		[HttpGet]
 		[Route("SimulaEvolucaoCOVID")]
 		public ActionResult GetSimulacao(string getSemanas)
 		{
-			contaSemanas += Verifica.Semanas(getSemanas);
+			simulacaoFinal.Semanas += Verifica.Semanas(getSemanas);
 
+			IEnumerable<Estado> contexto = simulacaoFinal.Contexto;
 			Simulando.AtualizaContexto(ref contexto, Verifica.Semanas(getSemanas));
+			simulacaoFinal.Contexto = contexto;
 
-			foreach (var estado in contexto)
+			foreach (var estado in simulacaoFinal.Contexto)
 			{
-				infectados += estado.Infectados;
-				curados += estado.Curados;
-				mortos += estado.Mortos;
+				simulacaoFinal.Infectados += estado.Infectados;
+				simulacaoFinal.Curados += estado.Curados;
+				simulacaoFinal.Mortos += estado.Mortos;
 			}
 
 			return Verifica.Semanas(getSemanas) == 0 ?
-				Ok("Nenhuma alteração realizada...") : Ok(contexto);
+				Ok("Nenhuma alteração realizada...") : Ok(simulacaoFinal.Contexto);
 		}
 
 		[HttpPut]
 		[Route("upDateCondicaoDeContorno")]
 		public ActionResult UpDateCondicaoDeContorno(string nome, [FromBody] Estado estado)
 		{
-			bool nomeValido = Verifica.NomeEstado(contexto, nome) != "Nome de estado inválido!";
+			bool nomeValido = Verifica.NomeEstado(simulacaoFinal.Contexto, nome) != "Nome de estado inválido!";
 			if (nomeValido)
 			{
-				contexto.First(q => q.Nome == nome).Infectados = estado.Infectados;
-				contexto.First(q => q.Nome == nome).Curados = estado.Curados;
-				contexto.First(q => q.Nome == nome).Mortos = estado.Mortos;
+				simulacaoFinal.Contexto.First(q => q.Nome == nome).Infectados = estado.Infectados;
+				simulacaoFinal.Contexto.First(q => q.Nome == nome).Curados = estado.Curados;
+				simulacaoFinal.Contexto.First(q => q.Nome == nome).Mortos = estado.Mortos;
 			}
-			return nomeValido ? Ok(contexto) : Ok("Nome de estado inválido!");
+			return nomeValido ? Ok(simulacaoFinal.Contexto) : Ok("Nome de estado inválido!");
 		}
 
 		[HttpDelete]
 		[Route("deleteEstado")]
 		public ActionResult DeleteEstado(string nome)
 		{
-			bool nomeValido = Verifica.NomeEstado(contexto, nome) != "Nome de estado inválido!";
+			bool nomeValido = Verifica.NomeEstado(simulacaoFinal.Contexto, nome) != "Nome de estado inválido!";
 			return nomeValido ?
-				Ok(contexto = contexto.Where(q => q.Nome != nome)) : Ok("Nome de estado inválido!");
+				Ok(simulacaoFinal.Contexto = simulacaoFinal.Contexto.Where(q => q.Nome != nome)) : Ok("Nome de estado inválido!");
 		}
 
 		[HttpGet]
@@ -82,15 +80,10 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		{
 			simulacaoFinal.Nome = nome;
 			simulacaoFinal.Descricao = descricao;
-			simulacaoFinal.Contexto = contexto;
-			simulacaoFinal.Semanas = contaSemanas;
-			simulacaoFinal.Infectados = infectados;
-			simulacaoFinal.Curados = curados;
-			simulacaoFinal.Mortos = mortos;
 
 			Registrar.Simulacao(simulacaoFinal);
 
-			foreach (var estado in contexto)
+			foreach (var estado in simulacaoFinal.Contexto)
 				Registrar.Estados(estado, simulacaoFinal.ID);
 
 			return Ok(simulacaoFinal);
@@ -109,31 +102,30 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		{
 			simulacaoFinal = Buscar.Simulacao().First(q => q.ID == id);
 			simulacaoFinal.Contexto = Buscar.Estados(id);
-
-			contexto = simulacaoFinal.Contexto;
-			contaSemanas = simulacaoFinal.Semanas;
-			infectados = simulacaoFinal.Infectados;
-			curados = simulacaoFinal.Curados;
-			mortos = simulacaoFinal.Mortos;
 			return Ok(simulacaoFinal);
 		}
 
 		[HttpGet]
-		[Route("getAtualizaSimulacaoAnterior")]
-		public ActionResult GetAtualizaSimulacaoAnterior()
+		[Route("getAtualizaSimulacao")]
+		public ActionResult GetAtualizaSimulacao()
 		{
-			simulacaoFinal.Contexto = contexto;
-			simulacaoFinal.Semanas = contaSemanas;
-			simulacaoFinal.Infectados = infectados;
-			simulacaoFinal.Curados = curados;
-			simulacaoFinal.Mortos = mortos;
-
 			Atualizar.Simulacao(simulacaoFinal);
 
-			foreach (var estado in contexto)
+			//TEM QUE ARRUMAR ESSA PARTE*************
+			foreach (var estado in simulacaoFinal.Contexto)
 				Registrar.Estados(estado, simulacaoFinal.ID);
 
 			return Ok(simulacaoFinal);
+		}
+
+		[HttpDelete]
+		[Route("deleteSimulacao")]
+		public ActionResult DeleteSimulacao(int idSimulacao)
+		{
+			IEnumerable<Estado> contexto = ImplementaEstados.Brasil();
+			Simulacao simulacaoFinal = new Simulacao() { ID = Buscar.Simulacao().Last(q => q.ID >= 0).ID + 1 };
+			Excluir.Simulacao(idSimulacao);
+			return Ok("Simulação excluida com sucesso!");
 		}
 	}
 }
