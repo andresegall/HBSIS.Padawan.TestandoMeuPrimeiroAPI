@@ -99,8 +99,12 @@ namespace HBSIS.Padawan.TestandoMeuPrimeiroAPI.Controllers
 		[Route("getSelecionaSimulacaoAnterior")]
 		public ActionResult getSelecionaSimulacaoAnterior(int id)
 		{
-			simulacaoFinal = Buscar.Simulacao().First(q => q.ID == id);
-			simulacaoFinal.Contexto = Buscar.Estados(id);
+			List<Simulacao> simulacoes = Buscar.Simulacao();
+			if (simulacoes.Any(q => q.ID == id))
+			{
+				simulacaoFinal = simulacoes.First(q => q.ID == id);
+				simulacaoFinal.Contexto = Buscar.Estados(id);
+			}
 			return Ok(simulacaoFinal);
 		}
 
